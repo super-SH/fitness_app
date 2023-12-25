@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { NavBar } from '../components';
+import { Footer, NavBar } from '../components';
 
 function AppLayout() {
   return (
@@ -10,7 +10,7 @@ function AppLayout() {
       <div>
         <Outlet />
       </div>
-      <footer>footer</footer>
+      <Footer />
     </Box>
   );
 }

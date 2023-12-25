@@ -8,3 +8,18 @@ body {
   margin: 0px;
   box-sizing: border-box;
 }
+
+.hero-banner-img {
+  position: absolute;
+  right: 40px;
+  top: 0px;
+  width: 640px;
+  height: 840px;
+  margin-top: -210px;
+}
+
+@media screen and (max-width: 1200px) {
+  .hero-banner-img {
+    display: none;
+  }
+}

@@ -1,7 +1,12 @@
 import React from 'react';
 import './App.css';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import {
+  Navigate,
+  RouterProvider,
+  createBrowserRouter,
+} from 'react-router-dom';
 import { AppLayout, Error } from './ui';
+import { ExerciseDetails, Home } from './pages';
 
 const router = createBrowserRouter([
   {
@@ -11,11 +16,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <div>Hello world!</div>,
+        element: <Navigate to='/home' />,
       },
       {
         path: '/home',
-        element: <div>Hello home!</div>,
+        element: <Home />,
+      },
+      {
+        path: '/exercise/:id',
+        element: <ExerciseDetails />,
       },
     ],
   },
