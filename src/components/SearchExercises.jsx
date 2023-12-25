@@ -6,14 +6,17 @@ import {
   Typography,
 } from '@mui/material';
 import React, { useState } from 'react';
+import { useGetBodyPartsListQuery } from '../services/exerciseDBApi';
 
 function SearchExercises() {
   const [searchTerm, setSearchTerm] = useState('');
+  const { data } = useGetBodyPartsListQuery();
 
   function handleSearch() {
     console.log('clicked');
     if (!searchTerm) return;
     console.log(searchTerm);
+    console.log(data);
   }
 
   return (
