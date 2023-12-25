@@ -23,7 +23,7 @@ function NavBar() {
           style={{
             textDecoration: 'none',
             color: '#3a1212',
-            borderBottom: '3px solid #ff2526',
+            boxShadow: 'inset 0px -2px  #D40000',
           }}
         >
           Home
