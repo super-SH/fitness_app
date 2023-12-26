@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   InputAdornment,
   Stack,
@@ -6,17 +7,29 @@ import {
   Typography,
 } from '@mui/material';
 import React, { useState } from 'react';
-import { useGetBodyPartsListQuery } from '../services/exerciseDBApi';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  exercisesSelector,
+  searchTermChanged,
+} from '../features/exercisesSlice';
+import { HorizontalScroll } from './';
+// import {
+//   useGetBodyPartsListQuery,
+//   useGetExercisesQuery,
+// } from '../services/exerciseDBApi';
 
 function SearchExercises() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const { data } = useGetBodyPartsListQuery();
+  const dispatch = useDispatch();
+  const { searchTerm } = useSelector(exercisesSelector);
+  // const { data } = useGetBodyPartsListQuery();
+  // const { data: exercises } = useGetExercisesQuery();
 
   function handleSearch() {
     console.log('clicked');
     if (!searchTerm) return;
     console.log(searchTerm);
-    console.log(data);
+    // console.log(data);
+    // console.log(exercises);
   }
 
   return (
@@ -43,7 +56,9 @@ function SearchExercises() {
         type='text'
         color='error'
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value.toLowerCase())}
+        onChange={(e) =>
+          dispatch(searchTermChanged(e.target.value.toLowerCase()))
+        }
         sx={{
           input: {
             fontWeight: '700',
@@ -66,6 +81,9 @@ function SearchExercises() {
           ),
         }}
       />
+      <Box sx={{ width: '100%', p: '20px' }}>
+        <HorizontalScroll />
+      </Box>
     </Stack>
   );
 }
