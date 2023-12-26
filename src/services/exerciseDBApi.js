@@ -22,10 +22,14 @@ export const exerciseDBApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getBodyPartsList: builder.query({
-      query: () => `/bodyPartList`,
-    }),
+    // getBodyPartsList: builder.query({
+    //   query: () => `/bodyPartList`,
+    // }),
+    // get all data from api and filter it on the client side , to cosume less api request since rapid api has limit
+    // getAllExercises: builder.query({
+    //   query: () => `?limit=99999`,
+    // }),
   }),
 });
 
-export const { useGetBodyPartsListQuery } = exerciseDBApi;
+// export const { useGetBodyPartsListQuery, useGetExercisesQuery } = exerciseDBApi;

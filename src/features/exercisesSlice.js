@@ -17,7 +17,7 @@ const exercisesSlice = createSlice({
     searchTermChanged: (state, action) => {
       state.searchTerm = action.payload;
     },
-    bodyPartChanged: (state, action) => {
+    bodyPartSelected: (state, action) => {
       state.bodyPart = action.payload;
     },
     pageSelected: (state, action) => {
@@ -36,7 +36,7 @@ const exercisesSlice = createSlice({
 export const {
   exercisesDataSet,
   searchTermChanged,
-  bodyPartChanged,
+  bodyPartSelected,
   pageSelected,
   pageDecreased,
   pageIncreased,
