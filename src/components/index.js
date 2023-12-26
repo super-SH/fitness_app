@@ -5,3 +5,4 @@ export { default as SearchExercises } from './SearchExercises';
 export { default as Exercises } from './Exercises';
 export { default as HorizontalScroll } from './HorizontalScroll';
 export { default as BodyPartCard } from './BodyPartCard';
+export { default as ExerciseCard } from './ExerciseCard';

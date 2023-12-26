@@ -28,6 +28,17 @@ body {
   transition: 0.3s all ease-in-out;
 }
 
+.exercise-card {
+  background: #fff;
+  box-shadow: inset 0px 4px #d40000;
+  transform: scale(0.9, 0.9);
+  transition: 0.3s all ease-in-out;
+}
+
+.exercise-card:hover {
+  transform: scale(0.8, 0.8);
+}
+
 .bodyPart-card:hover {
   transform: scale(1, 1);
 }
@@ -42,7 +53,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #ff2625;
+  color: #d40000;
   font-size: 32px;
   transform: scale(1, 1);
   transition: 0.3s all ease-in-out;
