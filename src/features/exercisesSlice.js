@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { exerciseDBApi } from '../services/exerciseDBApi';
 
 const initialState = {
   searchTerm: '',
@@ -30,6 +31,14 @@ const exercisesSlice = createSlice({
     pageDecreased: (state) => {
       state.page = state.page <= 1 ? state.page : state.page - 1;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addMatcher(
+      exerciseDBApi.endpoints.getAllExercises.matchFulfilled,
+      (state, action) => {
+        state.exercisesData = action.payload;
+      }
+    );
   },
 });
 
