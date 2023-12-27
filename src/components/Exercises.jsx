@@ -20,20 +20,9 @@ function Exercises() {
     function () {
       if (!exercisesData?.length)
         dispatch(exercisesDataSet(data?.slice(0, 20)));
-
-      // if (bodyPart !== 'all')
-      //   dispatch(
-      //     exercisesDataSet(
-      //       data?.filter((item) => item.bodyPart === bodyPart)?.slice(0, 20)
-      //     )
-      //   );
     },
     [data, exercisesData, dispatch, bodyPart]
   );
-
-  // console.log(data?.filter((item) => item.bodyPart === bodyPart)?.slice(0, 20));
-  console.log(exercisesData);
-  console.log(page);
 
   function paginate(e, value) {
     dispatch(pageSelected(value));

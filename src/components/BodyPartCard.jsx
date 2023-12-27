@@ -18,11 +18,18 @@ function BodyPartCard({ item }) {
 
   function handleSelectBodyPart() {
     dispatch(bodyPartSelected(item));
-    dispatch(
-      exercisesDataSet(
-        exercises?.filter((exercise) => exercise.bodyPart === item).slice(0, 20)
-      )
-    );
+
+    if (item === 'all') {
+      dispatch(exercisesDataSet(exercises?.slice(0, 20)));
+    } else {
+      dispatch(
+        exercisesDataSet(
+          exercises
+            ?.filter((exercise) => exercise.bodyPart === item)
+            .slice(0, 20)
+        )
+      );
+    }
   }
 
   return (

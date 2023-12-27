@@ -9,27 +9,32 @@ import {
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  exercisesDataSet,
   exercisesSelector,
   searchTermChanged,
 } from '../features/exercisesSlice';
 import { HorizontalScroll } from './';
-// import {
-//   useGetBodyPartsListQuery,
-//   useGetExercisesQuery,
-// } from '../services/exerciseDBApi';
+import { useGetAllExercisesQuery } from '../services/exerciseDBApi';
 
 function SearchExercises() {
   const dispatch = useDispatch();
   const { searchTerm } = useSelector(exercisesSelector);
-  // const { data } = useGetBodyPartsListQuery();
-  // const { data: exercises } = useGetExercisesQuery();
+  const { data: exercises } = useGetAllExercisesQuery();
 
   function handleSearch() {
     console.log('clicked');
     if (!searchTerm) return;
     console.log(searchTerm);
-    // console.log(data);
-    // console.log(exercises);
+
+    const searchedExercises = exercises?.filter(
+      (exercise) =>
+        exercise.bodyPart.toLowerCase().includes(searchTerm) ||
+        exercise.equipment.toLowerCase().includes(searchTerm) ||
+        exercise.name.toLowerCase().includes(searchTerm) ||
+        exercise.target.toLowerCase().includes(searchTerm)
+    );
+
+    dispatch(exercisesDataSet(searchedExercises?.slice(0, 20)));
   }
 
   return (
