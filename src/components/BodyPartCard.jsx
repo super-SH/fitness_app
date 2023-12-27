@@ -5,13 +5,25 @@ import Icon from '../assets/icons/gym.png';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   bodyPartSelected,
+  exercisesDataSet,
   exercisesSelector,
 } from '../features/exercisesSlice';
+import { useGetAllExercisesQuery } from '../services/exerciseDBApi';
 
 function BodyPartCard({ item }) {
+  const { data: exercises } = useGetAllExercisesQuery();
   const { bodyPart } = useSelector(exercisesSelector);
 
   const dispatch = useDispatch();
+
+  function handleSelectBodyPart() {
+    dispatch(bodyPartSelected(item));
+    dispatch(
+      exercisesDataSet(
+        exercises?.filter((exercise) => exercise.bodyPart === item).slice(0, 20)
+      )
+    );
+  }
 
   return (
     <Box
@@ -30,9 +42,7 @@ function BodyPartCard({ item }) {
           height: '270px',
           gap: '36px',
         }}
-        onClick={() => {
-          dispatch(bodyPartSelected(item));
-        }}
+        onClick={handleSelectBodyPart}
       >
         <img
           src={Icon}

@@ -6,13 +6,17 @@ import 'react-horizontal-scrolling-menu/dist/styles.css';
 
 import RightArrowIcon from '../assets/icons/right-arrow.png';
 import LeftArrowIcon from '../assets/icons/left-arrow.png';
-
-const dummies = ['all', 'lowerleg', 'upperleg', 'chest', 'back', 'neck', 'arm'];
+import { useGetBodyPartsListQuery } from '../services/exerciseDBApi';
+import { useSelector } from 'react-redux';
+import { exercisesSelector } from '../features/exercisesSlice';
 
 function HorizontalScroll() {
+  useGetBodyPartsListQuery();
+  const { bodyPartsList } = useSelector(exercisesSelector);
+
   return (
     <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-      {dummies.map((part, i) => (
+      {bodyPartsList?.map((part, i) => (
         <BodyPartCard key={part} item={part} itemId={i} title={i} />
       ))}
     </ScrollMenu>
