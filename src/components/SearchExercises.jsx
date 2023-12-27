@@ -22,9 +22,7 @@ function SearchExercises() {
   const { data: exercises } = useGetAllExercisesQuery();
 
   function handleSearch() {
-    console.log('clicked');
     if (!searchTerm) return;
-    console.log(searchTerm);
 
     const searchedExercises = exercises?.filter(
       (exercise) =>
@@ -35,6 +33,7 @@ function SearchExercises() {
     );
 
     dispatch(exercisesDataSet(searchedExercises?.slice(0, 20)));
+    dispatch(searchTermChanged(''));
   }
 
   return (

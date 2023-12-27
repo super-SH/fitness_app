@@ -2,16 +2,6 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const rapidApiKey = import.meta.env.VITE_RAPID_API_KEY;
 
-// const options = {
-//   method: 'GET',
-//   url: 'https://exercisedb.p.rapidapi.com/exercises',
-//   params: {limit: '10'},
-//   headers: {
-//     'X-RapidAPI-Key': rapidApiKey,
-//     'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
-//   }
-// };
-
 export const exerciseDBApi = createApi({
   reducerPath: 'exerciseDBApi',
   baseQuery: fetchBaseQuery({
@@ -29,8 +19,15 @@ export const exerciseDBApi = createApi({
     getAllExercises: builder.query({
       query: () => `?limit=99999`,
     }),
+
+    getExerciseDetailsById: builder.query({
+      query: (id) => `/exercise/${id}`,
+    }),
   }),
 });
 
-export const { useGetBodyPartsListQuery, useGetAllExercisesQuery } =
-  exerciseDBApi;
+export const {
+  useGetBodyPartsListQuery,
+  useGetAllExercisesQuery,
+  useGetExerciseDetailsByIdQuery,
+} = exerciseDBApi;
