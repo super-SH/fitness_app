@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { exerciseDBApi } from '../services/exerciseDBApi';
 
 const initialState = {
   searchTerm: '',
@@ -13,7 +12,7 @@ const exercisesSlice = createSlice({
   initialState,
   reducers: {
     exercisesDataSet: (state, action) => {
-      state.exercises = action.payload;
+      state.exercisesData = action.payload;
     },
     searchTermChanged: (state, action) => {
       state.searchTerm = action.payload;
@@ -31,14 +30,6 @@ const exercisesSlice = createSlice({
     pageDecreased: (state) => {
       state.page = state.page <= 1 ? state.page : state.page - 1;
     },
-  },
-  extraReducers: (builder) => {
-    builder.addMatcher(
-      exerciseDBApi.endpoints.getAllExercises.matchFulfilled,
-      (state, action) => {
-        state.exercisesData = action.payload;
-      }
-    );
   },
 });
 
