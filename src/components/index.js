@@ -8,3 +8,4 @@ export { default as BodyPartCard } from './BodyPartCard';
 export { default as ExerciseCard } from './ExerciseCard';
 export { default as ExerciseVideos } from './ExerciseVideos';
 export { default as Details } from './Details';
+export { default as Loader } from './Loader';

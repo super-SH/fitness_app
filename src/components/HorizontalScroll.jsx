@@ -9,10 +9,13 @@ import LeftArrowIcon from '../assets/icons/left-arrow.png';
 import { useGetBodyPartsListQuery } from '../services/exerciseDBApi';
 import { useSelector } from 'react-redux';
 import { exercisesSelector } from '../features/exercisesSlice';
+import { Loader } from './';
 
 function HorizontalScroll() {
-  useGetBodyPartsListQuery();
+  const { isFetching } = useGetBodyPartsListQuery();
   const { bodyPartsList } = useSelector(exercisesSelector);
+
+  if (isFetching) return <Loader />;
 
   return (
     <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>

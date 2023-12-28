@@ -3,6 +3,7 @@ import { useGetYoutubeVideosByNameQuery } from '../services/youtubeSearchApi';
 import { useSelector } from 'react-redux';
 import { exercisesSelector } from '../features/exercisesSlice';
 import { Box, Link, Stack, Typography } from '@mui/material';
+import { Loader } from './';
 
 function ExerciseVideos() {
   const { selectedExerciseName } = useSelector(exercisesSelector);
@@ -13,7 +14,7 @@ function ExerciseVideos() {
     (item) => Object.keys(item)[0] === 'video'
   );
 
-  if (isFetching) return 'loading';
+  if (isFetching) return <Loader />;
 
   return (
     <Box sx={{ mt: { xs: '24px', lg: '96px' }, p: '24px' }}>

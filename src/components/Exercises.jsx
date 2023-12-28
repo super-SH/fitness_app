@@ -9,10 +9,10 @@ import {
   pageSelected,
 } from '../features/exercisesSlice';
 import { useGetAllExercisesQuery } from '../services/exerciseDBApi';
-import { ExerciseCard } from './';
+import { ExerciseCard, Loader } from './';
 
 function Exercises() {
-  const { data } = useGetAllExercisesQuery();
+  const { data, isFetching } = useGetAllExercisesQuery();
   const {
     exercisesData,
     page,
@@ -41,6 +41,8 @@ function Exercises() {
     dispatch(indexOfFirstExerciseSet((value - 1) * exercisesPerPage));
     dispatch(indexOfLastExerciseSet(value * exercisesPerPage));
   }
+
+  if (isFetching) return <Loader />;
 
   return (
     <Box id='exercises' sx={{ mt: { xs: '36px', lg: '96px' } }} p='20px'>

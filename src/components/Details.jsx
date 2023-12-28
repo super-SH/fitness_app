@@ -8,14 +8,13 @@ import TargetImage from '../assets/icons/target.png';
 import EquipmentImage from '../assets/icons/equipment.png';
 import { useDispatch } from 'react-redux';
 import { exerciseNameSelected } from '../features/exercisesSlice';
+import { Loader } from './';
 
 function Details() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { data: exerciseDetails, isFetching } =
     useGetExerciseDetailsByIdQuery(id);
-
-  console.log(exerciseDetails);
 
   useEffect(
     function () {
@@ -38,6 +37,8 @@ function Details() {
       name: exerciseDetails?.equipment,
     },
   ];
+
+  if (isFetching) return <Loader />;
 
   return (
     <Stack
