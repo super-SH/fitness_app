@@ -2,7 +2,6 @@ import { Box, Typography, Stack } from '@mui/material';
 
 import React from 'react';
 import Logo from '../assets/images/Logo-1.png';
-import Loader from './Loader';
 
 function Footer() {
   return (
@@ -18,7 +17,6 @@ function Footer() {
       >
         Made with ❤️ by SH
       </Typography>
-      <Loader />
     </Box>
   );
 }

@@ -9,7 +9,7 @@ function ExerciseCard({ exercise }) {
     <Grid
       item
       key={exercise.id}
-      xs={7}
+      xs={9}
       md={6}
       lg={4}
       xl={3}
@@ -26,7 +26,7 @@ function ExerciseCard({ exercise }) {
         src={exercise?.gifUrl}
         alt={exercise.name}
         loading='lazy'
-        style={{ padding: '8px' }}
+        style={{ padding: '4px' }}
       />
       <Typography
         maxWidth='80%'

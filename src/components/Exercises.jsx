@@ -51,10 +51,10 @@ function Exercises() {
       </Typography>
       <Grid
         container
-        spacing={4}
         sx={{
           justifyContent: { xs: 'center', md: 'flex-start' },
           alignItems: 'center',
+          gap: { xs: '4px', sm: '12px', md: '16px', lg: '24px' },
         }}
       >
         {exercisesData
