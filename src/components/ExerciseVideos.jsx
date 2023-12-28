@@ -6,10 +6,14 @@ import { Box, Link, Stack, Typography } from '@mui/material';
 
 function ExerciseVideos() {
   const { selectedExerciseName } = useSelector(exercisesSelector);
-  const { data: exerciseVideosData } =
+  const { data, isFetching } =
     useGetYoutubeVideosByNameQuery(selectedExerciseName);
 
-  console.log(exerciseVideosData?.contents);
+  const exerciseVideosData = data?.contents?.filter(
+    (item) => Object.keys(item)[0] === 'video'
+  );
+
+  if (isFetching) return 'loading';
 
   return (
     <Box sx={{ mt: { xs: '24px', lg: '96px' }, p: '24px' }}>
@@ -37,7 +41,7 @@ function ExerciseVideos() {
           gap: { xs: '12px', lg: '64px' },
         }}
       >
-        {exerciseVideosData?.contents?.slice(0, 3)?.map((video, i) => (
+        {exerciseVideosData?.slice(0, 3)?.map((video, i) => (
           <Link
             key={i}
             href={`https://www.youtube.com/watch?v=${video.video.videoId}`}
