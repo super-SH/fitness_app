@@ -70,13 +70,8 @@ function Details() {
         )}
 
         <Stack gap='24px' direction='row'>
-          {extraDetail?.map((item) => (
-            <Stack
-              key={item.name}
-              direction='row'
-              gap='24px'
-              alignItems='center'
-            >
+          {extraDetail?.map((item, i) => (
+            <Stack key={i} direction='row' gap='24px' alignItems='center'>
               <Box
                 sx={{
                   background: '#FFF2DB',

@@ -55,11 +55,15 @@ function ExerciseVideos() {
             <img
               src={video.video?.thumbnails[0]?.url}
               alt={video.video.title}
+              style={{ borderRadius: '4px', borderTopLeftRadius: '24px' }}
             />
             <Box>
               <Typography
                 fontWeight='500'
                 sx={{ fontSize: { xs: '20px', sm: '24px' } }}
+                textOverflow='ellipsis'
+                overflow='hidden'
+                whiteSpace='nowrap'
               >
                 {video.video.title}
               </Typography>
