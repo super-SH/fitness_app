@@ -7,6 +7,7 @@ const initialState = {
   bodyPartsList: [],
   exercisesData: [],
   page: 1,
+  selectedExerciseName: '',
 };
 
 const exercisesSlice = createSlice({
@@ -15,6 +16,9 @@ const exercisesSlice = createSlice({
   reducers: {
     exercisesDataSet: (state, action) => {
       state.exercisesData = action.payload;
+    },
+    exerciseNameSelected: (state, action) => {
+      state.selectedExerciseName = action.payload;
     },
     searchTermChanged: (state, action) => {
       state.searchTerm = action.payload;
@@ -50,6 +54,7 @@ export const {
   pageSelected,
   pageDecreased,
   pageIncreased,
+  exerciseNameSelected,
 } = exercisesSlice.actions;
 
 export const exercisesSelector = (state) => state.exercises;

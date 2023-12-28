@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useGetExerciseDetailsByIdQuery } from '../services/exerciseDBApi';
 import { Box, Stack, Typography } from '@mui/material';
@@ -6,13 +6,23 @@ import { Box, Stack, Typography } from '@mui/material';
 import BodyPartImage from '../assets/icons/body-part.png';
 import TargetImage from '../assets/icons/target.png';
 import EquipmentImage from '../assets/icons/equipment.png';
+import { useDispatch } from 'react-redux';
+import { exerciseNameSelected } from '../features/exercisesSlice';
 
 function Details() {
   const { id } = useParams();
+  const dispatch = useDispatch();
   const { data: exerciseDetails, isFetching } =
     useGetExerciseDetailsByIdQuery(id);
 
   console.log(exerciseDetails);
+
+  useEffect(
+    function () {
+      dispatch(exerciseNameSelected(exerciseDetails?.name));
+    },
+    [exerciseDetails, dispatch]
+  );
 
   const extraDetail = [
     {
