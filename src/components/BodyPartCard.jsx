@@ -7,6 +7,7 @@ import {
   bodyPartSelected,
   exercisesDataSet,
   exercisesSelector,
+  pageSelected,
 } from '../features/exercisesSlice';
 import { useGetAllExercisesQuery } from '../services/exerciseDBApi';
 
@@ -20,13 +21,11 @@ function BodyPartCard({ item }) {
     dispatch(bodyPartSelected(item));
 
     if (item === 'all') {
-      dispatch(exercisesDataSet(exercises?.slice(0, 20)));
+      dispatch(exercisesDataSet(exercises));
     } else {
       dispatch(
         exercisesDataSet(
-          exercises
-            ?.filter((exercise) => exercise.bodyPart === item)
-            .slice(0, 20)
+          exercises?.filter((exercise) => exercise.bodyPart === item)
         )
       );
     }

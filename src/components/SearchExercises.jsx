@@ -18,7 +18,8 @@ import { useGetAllExercisesQuery } from '../services/exerciseDBApi';
 
 function SearchExercises() {
   const dispatch = useDispatch();
-  const { searchTerm } = useSelector(exercisesSelector);
+  const { searchTerm, indexOfFirstExercise, indexOfLastExercise } =
+    useSelector(exercisesSelector);
   const { data: exercises } = useGetAllExercisesQuery();
 
   function handleSearch() {
@@ -32,7 +33,7 @@ function SearchExercises() {
         exercise.target.toLowerCase().includes(searchTerm)
     );
 
-    dispatch(exercisesDataSet(searchedExercises?.slice(0, 20)));
+    dispatch(exercisesDataSet(searchedExercises));
     dispatch(searchTermChanged(''));
   }
 

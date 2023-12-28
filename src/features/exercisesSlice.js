@@ -6,8 +6,10 @@ const initialState = {
   bodyPart: 'all',
   bodyPartsList: [],
   exercisesData: [],
-  page: 1,
   selectedExerciseName: '',
+  page: 1,
+  indexOfFirstExercise: 0,
+  indexOfLastExercise: 15,
 };
 
 const exercisesSlice = createSlice({
@@ -21,13 +23,25 @@ const exercisesSlice = createSlice({
       state.selectedExerciseName = action.payload;
     },
     searchTermChanged: (state, action) => {
+      state.page = 1;
+      state.indexOfFirstExercise = 0;
+      state.indexOfLastExercise = 15;
       state.searchTerm = action.payload;
     },
     bodyPartSelected: (state, action) => {
+      state.page = 1;
+      state.indexOfFirstExercise = 0;
+      state.indexOfLastExercise = 15;
       state.bodyPart = action.payload;
     },
     pageSelected: (state, action) => {
       state.page = action.payload;
+    },
+    indexOfFirstExerciseSet: (state, action) => {
+      state.indexOfFirstExercise = action.payload;
+    },
+    indexOfLastExerciseSet: (state, action) => {
+      state.indexOfLastExercise = action.payload;
     },
     // need to accept number of total pages as the action.payload
     pageIncreased: (state, action) => {
@@ -55,6 +69,8 @@ export const {
   pageDecreased,
   pageIncreased,
   exerciseNameSelected,
+  indexOfFirstExerciseSet,
+  indexOfLastExerciseSet,
 } = exercisesSlice.actions;
 
 export const exercisesSelector = (state) => state.exercises;

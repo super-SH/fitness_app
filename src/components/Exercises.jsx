@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   exercisesDataSet,
   exercisesSelector,
+  indexOfFirstExerciseSet,
+  indexOfLastExerciseSet,
   pageSelected,
 } from '../features/exercisesSlice';
 import { useGetAllExercisesQuery } from '../services/exerciseDBApi';
@@ -11,21 +13,33 @@ import { ExerciseCard } from './';
 
 function Exercises() {
   const { data } = useGetAllExercisesQuery();
-  const { exercisesData, page, bodyPart } = useSelector(exercisesSelector);
+  const {
+    exercisesData,
+    page,
+    bodyPart,
+    indexOfFirstExercise,
+    indexOfLastExercise,
+  } = useSelector(exercisesSelector);
+
+  console.log(indexOfFirstExercise, indexOfLastExercise);
 
   const dispatch = useDispatch();
+
+  const exercisesPerPage = 15;
 
   // Might change later
   useEffect(
     function () {
-      if (!exercisesData?.length)
-        dispatch(exercisesDataSet(data?.slice(0, 20)));
+      if (!exercisesData?.length) dispatch(exercisesDataSet(data));
     },
-    [data, exercisesData, dispatch, bodyPart]
+    [data, exercisesData, dispatch]
   );
 
   function paginate(e, value) {
     dispatch(pageSelected(value));
+
+    dispatch(indexOfFirstExerciseSet((value - 1) * exercisesPerPage));
+    dispatch(indexOfLastExerciseSet(value * exercisesPerPage));
   }
 
   return (
@@ -36,11 +50,16 @@ function Exercises() {
       <Grid
         container
         spacing={4}
-        sx={{ justifyContent: 'center', alignItems: 'center' }}
+        sx={{
+          justifyContent: { xs: 'center', md: 'flex-start' },
+          alignItems: 'center',
+        }}
       >
-        {exercisesData?.slice(0, 16)?.map((exercise) => (
-          <ExerciseCard exercise={exercise} key={exercise.id} />
-        ))}
+        {exercisesData
+          ?.slice(indexOfFirstExercise, indexOfLastExercise)
+          ?.map((exercise) => (
+            <ExerciseCard exercise={exercise} key={exercise.id} />
+          ))}
       </Grid>
       <Box
         sx={{
@@ -56,7 +75,7 @@ function Exercises() {
           color='error'
           defaultPage={1}
           page={page}
-          count={10}
+          count={Math.ceil(exercisesData?.length / exercisesPerPage)}
           onChange={paginate}
         />
       </Box>
