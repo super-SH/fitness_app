@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import {
   Box,
   Button,
@@ -6,7 +7,6 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   exercisesDataSet,
@@ -43,7 +43,7 @@ function SearchExercises() {
       justifyContent='center'
       mt='32px'
       gap='32px'
-      p='20px'
+      sx={{ p: { xs: '4px', sm: '8px', lg: '22px' } }}
     >
       <Typography
         sx={{ fontSize: { xs: '28px', lg: '42px' } }}
@@ -86,7 +86,7 @@ function SearchExercises() {
           ),
         }}
       />
-      <Box sx={{ width: '100%', p: '20px' }}>
+      <Box sx={{ width: '100%', p: { xs: '6px', lg: '20px' } }}>
         <HorizontalScroll />
       </Box>
     </Stack>

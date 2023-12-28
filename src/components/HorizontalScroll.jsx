@@ -37,6 +37,8 @@ function LeftArrow() {
       disabled={isFirstItemVisible}
       onClick={() => scrollPrev()}
       className='left-arrow'
+      py='0'
+      sx={{ width: { xs: '32px' }, px: { xs: '2px', sm: '8px', lg: '20px' } }}
     >
       <img src={LeftArrowIcon} alt='left-arrow' />
     </Box>
@@ -52,6 +54,8 @@ function RightArrow() {
       disabled={isLastItemVisible}
       onClick={() => scrollNext()}
       className='right-arrow'
+      py='0'
+      sx={{ width: { xs: '32px' }, px: { xs: '2px', sm: '8px', lg: '20px' } }}
     >
       <img src={RightArrowIcon} alt='right-arrow' />
     </Box>

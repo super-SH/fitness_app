@@ -34,7 +34,8 @@ function BodyPartCard({ item }) {
   return (
     <Box
       sx={{
-        m: '0 24px',
+        my: { xs: '2px' },
+        mx: '0',
       }}
     >
       <Stack
@@ -44,18 +45,22 @@ function BodyPartCard({ item }) {
         sx={{
           boxShadow: bodyPart === item ? 'inset 0px 6px  #D40000' : '',
           backgroundColor: '#efefef',
-          width: '260px',
-          height: '270px',
-          gap: '36px',
+          width: { xs: '96px', sm: '132px', md: '160px', lg: '260px' },
+          height: { xs: '96px', sm: '132px', md: '160px', lg: '270px' },
+          gap: { xs: '4px', lg: '24px' },
         }}
         onClick={handleSelectBodyPart}
       >
         <img
           src={Icon}
           alt='red gym icon'
-          style={{ width: '36px', height: '36px' }}
+          style={{ width: '28px', height: '28px' }}
         />
-        <Typography fontSize='26px' fontWeight='700' color='#3a1212'>
+        <Typography
+          fontWeight='700'
+          color='#3a1212'
+          sx={{ fontSize: { xs: '16px', md: '22px', lg: '32px' } }}
+        >
           {item}
         </Typography>
       </Stack>
