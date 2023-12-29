@@ -40,13 +40,6 @@ const exercisesSlice = createSlice({
     indexOfLastExerciseSet: (state, action) => {
       state.indexOfLastExercise = action.payload;
     },
-    // need to accept number of total pages as the action.payload
-    pageIncreased: (state, action) => {
-      state.page = state.page >= action.payload ? state.page : state.page + 1;
-    },
-    pageDecreased: (state) => {
-      state.page = state.page <= 1 ? state.page : state.page - 1;
-    },
   },
   extraReducers: (builder) => {
     builder
@@ -54,6 +47,12 @@ const exercisesSlice = createSlice({
         exerciseDBApi.endpoints.getBodyPartsList.matchFulfilled,
         (state, action) => {
           state.bodyPartsList = ['all', ...action.payload];
+        }
+      )
+      .addMatcher(
+        exerciseDBApi.endpoints.getAllExercises.matchFulfilled,
+        (state, action) => {
+          state.exercisesData = action.payload;
         }
       )
       .addMatcher(

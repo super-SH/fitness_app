@@ -33,56 +33,60 @@ function ExerciseVideos() {
         </span>{' '}
         exercise videos
       </Typography>
-      <Stack
-        flexWrap='wrap'
-        justifyContent='flex-start'
-        alignItems='center'
-        sx={{
-          flexDirection: { lg: 'row' },
-          gap: { xs: '12px', lg: '64px' },
-        }}
-      >
-        {exerciseVideosData?.slice(0, 3)?.map((video, i) => (
-          <Link
-            key={i}
-            href={`https://www.youtube.com/watch?v=${video.video.videoId}`}
-            target='_blank'
-            rel='noreferrer'
-            underline='none'
-            display='flex'
-            flexDirection='column'
-            color='#000'
-            sx={{
-              gap: { xs: '12px', sm: '16px', md: '24px' },
-              width: { xs: '220px', sm: '320px', md: '360px' },
-            }}
-          >
-            <img
-              src={video.video?.thumbnails[0]?.url}
-              alt={video.video.title}
-              style={{ borderRadius: '4px', borderTopLeftRadius: '24px' }}
-            />
-            <Box>
-              <Typography
-                fontWeight='500'
-                sx={{ fontSize: { xs: '20px', sm: '24px' } }}
-                textOverflow='ellipsis'
-                overflow='hidden'
-                whiteSpace='nowrap'
-              >
-                {video.video.title}
-              </Typography>
-              <Typography
-                fontWeight='500'
-                sx={{ fontSize: { xs: '14px', sm: '18px' } }}
-                color='#444'
-              >
-                {video.video.channelName}
-              </Typography>
-            </Box>
-          </Link>
-        ))}
-      </Stack>
+      {exerciseVideosData?.length > 0 ? (
+        <Stack
+          flexWrap='wrap'
+          justifyContent='flex-start'
+          alignItems='center'
+          sx={{
+            flexDirection: { lg: 'row' },
+            gap: { xs: '12px', lg: '64px' },
+          }}
+        >
+          {exerciseVideosData?.slice(0, 3)?.map((video, i) => (
+            <Link
+              key={i}
+              href={`https://www.youtube.com/watch?v=${video.video.videoId}`}
+              target='_blank'
+              rel='noreferrer'
+              underline='none'
+              display='flex'
+              flexDirection='column'
+              color='#000'
+              sx={{
+                gap: { xs: '12px', sm: '16px', md: '24px' },
+                width: { xs: '220px', sm: '320px', md: '360px' },
+              }}
+            >
+              <img
+                src={video.video?.thumbnails[0]?.url}
+                alt={video.video.title}
+                style={{ borderRadius: '4px', borderTopLeftRadius: '24px' }}
+              />
+              <Box>
+                <Typography
+                  fontWeight='500'
+                  sx={{ fontSize: { xs: '20px', sm: '24px' } }}
+                  textOverflow='ellipsis'
+                  overflow='hidden'
+                  whiteSpace='nowrap'
+                >
+                  {video.video.title}
+                </Typography>
+                <Typography
+                  fontWeight='500'
+                  sx={{ fontSize: { xs: '14px', sm: '18px' } }}
+                  color='#444'
+                >
+                  {video.video.channelName}
+                </Typography>
+              </Box>
+            </Link>
+          ))}
+        </Stack>
+      ) : (
+        <Typography fontSize='20px'>There is no video to show!</Typography>
+      )}
     </Box>
   );
 }
