@@ -19,9 +19,6 @@ const exercisesSlice = createSlice({
     exercisesDataSet: (state, action) => {
       state.exercisesData = action.payload;
     },
-    exerciseNameSelected: (state, action) => {
-      state.selectedExerciseName = action.payload;
-    },
     searchTermChanged: (state, action) => {
       state.page = 1;
       state.indexOfFirstExercise = 0;
@@ -52,12 +49,19 @@ const exercisesSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addMatcher(
-      exerciseDBApi.endpoints.getBodyPartsList.matchFulfilled,
-      (state, action) => {
-        state.bodyPartsList = ['all', ...action.payload];
-      }
-    );
+    builder
+      .addMatcher(
+        exerciseDBApi.endpoints.getBodyPartsList.matchFulfilled,
+        (state, action) => {
+          state.bodyPartsList = ['all', ...action.payload];
+        }
+      )
+      .addMatcher(
+        exerciseDBApi.endpoints.getExerciseDetailsById.matchFulfilled,
+        (state, action) => {
+          state.selectedExerciseName = action.payload?.name;
+        }
+      );
   },
 });
 
