@@ -1,6 +1,6 @@
-import { Grid, Typography } from '@mui/material';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Grid, Typography } from '@mui/material';
 
 function ExerciseCard({ exercise }) {
   const navigate = useNavigate();

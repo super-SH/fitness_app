@@ -1,8 +1,8 @@
-import { Box, Grid, Pagination, Typography } from '@mui/material';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Box, Grid, Pagination, Typography } from '@mui/material';
+
 import {
-  exercisesDataSet,
   exercisesSelector,
   indexOfFirstExerciseSet,
   indexOfLastExerciseSet,

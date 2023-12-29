@@ -1,15 +1,15 @@
-import { Box, Button, Typography } from '@mui/material';
 import React, { useContext } from 'react';
-import BodyPartCard from './BodyPartCard';
+import { useSelector } from 'react-redux';
+
+import { Box } from '@mui/material';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import 'react-horizontal-scrolling-menu/dist/styles.css';
 
+import { useGetBodyPartsListQuery } from '../services/exerciseDBApi';
+import { exercisesSelector } from '../features/exercisesSlice';
+import { Loader, BodyPartCard } from './';
 import RightArrowIcon from '../assets/icons/right-arrow.png';
 import LeftArrowIcon from '../assets/icons/left-arrow.png';
-import { useGetBodyPartsListQuery } from '../services/exerciseDBApi';
-import { useSelector } from 'react-redux';
-import { exercisesSelector } from '../features/exercisesSlice';
-import { Loader } from './';
 
 function HorizontalScroll() {
   const { isFetching } = useGetBodyPartsListQuery();

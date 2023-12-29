@@ -1,6 +1,7 @@
 import React from 'react';
-import { Details, ExerciseVideos } from '../components';
 import { Box } from '@mui/material';
+
+import { Details, ExerciseVideos } from '../components';
 
 function ExerciseDetails() {
   return (

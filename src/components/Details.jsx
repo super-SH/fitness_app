@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
-import { useGetExerciseDetailsByIdQuery } from '../services/exerciseDBApi';
 import { Box, Stack, Typography } from '@mui/material';
+
+import { useGetExerciseDetailsByIdQuery } from '../services/exerciseDBApi';
+import { Loader } from './';
 
 import BodyPartImage from '../assets/icons/body-part.png';
 import TargetImage from '../assets/icons/target.png';
 import EquipmentImage from '../assets/icons/equipment.png';
-
-import { Loader } from './';
 
 function Details() {
   const { id } = useParams();

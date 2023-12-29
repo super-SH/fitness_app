@@ -1,15 +1,15 @@
-import { Box, Stack, Typography } from '@mui/material';
 import React from 'react';
-
-import Icon from '../assets/icons/gym.png';
 import { useDispatch, useSelector } from 'react-redux';
+
+import { Box, Stack, Typography } from '@mui/material';
+
 import {
   bodyPartSelected,
   exercisesDataSet,
   exercisesSelector,
-  pageSelected,
 } from '../features/exercisesSlice';
 import { useGetAllExercisesQuery } from '../services/exerciseDBApi';
+import Icon from '../assets/icons/gym.png';
 
 function BodyPartCard({ item }) {
   const { data: exercises } = useGetAllExercisesQuery();

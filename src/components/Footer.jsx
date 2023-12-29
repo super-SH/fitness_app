@@ -1,6 +1,6 @@
+import React from 'react';
 import { Box, Typography, Stack } from '@mui/material';
 
-import React from 'react';
 import Logo from '../assets/images/Logo-1.png';
 
 function Footer() {

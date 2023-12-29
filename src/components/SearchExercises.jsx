@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Box,
   Button,
@@ -7,19 +8,18 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { useDispatch, useSelector } from 'react-redux';
+
 import {
   exercisesDataSet,
   exercisesSelector,
   searchTermChanged,
 } from '../features/exercisesSlice';
-import { HorizontalScroll } from './';
 import { useGetAllExercisesQuery } from '../services/exerciseDBApi';
+import { HorizontalScroll } from './';
 
 function SearchExercises() {
   const dispatch = useDispatch();
-  const { searchTerm, indexOfFirstExercise, indexOfLastExercise } =
-    useSelector(exercisesSelector);
+  const { searchTerm } = useSelector(exercisesSelector);
   const { data: exercises } = useGetAllExercisesQuery();
 
   function handleSearch() {

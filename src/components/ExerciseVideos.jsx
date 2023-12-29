@@ -1,8 +1,9 @@
 import React from 'react';
-import { useGetYoutubeVideosByNameQuery } from '../services/youtubeSearchApi';
 import { useSelector } from 'react-redux';
-import { exercisesSelector } from '../features/exercisesSlice';
 import { Box, Link, Stack, Typography } from '@mui/material';
+
+import { useGetYoutubeVideosByNameQuery } from '../services/youtubeSearchApi';
+import { exercisesSelector } from '../features/exercisesSlice';
 import { Loader } from './';
 
 function ExerciseVideos() {
